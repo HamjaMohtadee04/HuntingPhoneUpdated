@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunting Phone</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    
+    <header class="flex justify-between items-center p-4 bg-gray-800 text-white">
+        <h2 class="text-2xl font-bold">Hunting Phone</h2>
+        <button id="cart-logo" onclick="toggleCart()" class="relative">
+            <img src="https://img.icons8.com/material-rounded/24/shopping-cart.png" alt="Cart" class="w-8 h-8">
+            <span id="cart-count" class="absolute top-0 right-0 bg-red-600 text-white rounded-full px-1 text-xs">0</span>
+        </button>
+    </header>
+
+    <main class="container mx-auto mt-5">
+
+        <!-- search -->
+        <section class="bg-gray-100 p-4 mt-4"> 
+            <input id="search-field" type="text" placeholder="Search" class="input input-bordered w-full max-w-xs" />
+            <button onclick="handleSearch()" class="btn btn-accent">Search</button>
+        </section>
+
+        <!-- search result -->
+        <div id="loadingSpinner" class="text-center my-40 hidden">
+            <span class="loading loading-spinner text-primary loading-lg"></span>
+        </div>
+        <section class="searchContainer m-5">
+            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            </div>
+            <div id="showallContainer" class="hidden text-center my-5">
+                <button class="btn btn-accent" onclick="handleShowAll()">Show all</button>
+            </div>
+        </section>
+
+        <!-- modal for details -->
+        <dialog id="show_detail_modal" class="modal">
+            <div class="modal-box w-11/12 max-w-5xl">
+                <h3 id="showDetailphoneName" class="text-3xl font-bold"></h3>
+                <div id="show_detail_container"></div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- cart modal -->
+        <dialog id="cart_modal" class="modal">
+            <div class="modal-box w-11/12 max-w-5xl">
+                <h3 class="text-3xl font-bold">Your Cart</h3>
+                <ul id="cart-items" class="list-disc pl-5 mt-4"></ul>
+                <div class="modal-action">
+                    <button class="btn" onclick="closeCart()">Close</button>
+                </div>
+            </div>
+        </dialog>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="js/cart.js"></script>
+    <script src="js/phone.js"></script>
+</body>
+</html>
